@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          node-version: '20'
-
+      
       - run: cd payments && npm install
 
       - name: Run tests
-        run: npm run test:ci
+        run: | 
+          - echo "Organization variable : ${{ secrets.STRIPE_KEY }}"
+            npm run test:ci
         working-directory: ./payments
         env:
           STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
