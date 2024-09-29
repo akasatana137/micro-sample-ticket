@@ -13,5 +13,5 @@ jobs:
       - name: Run tests
         run: npm run test:ci
         working-directory: ./payments
-        # env:
-        #   STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+        env:
+          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
