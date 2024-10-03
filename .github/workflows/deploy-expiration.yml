@@ -1,0 +1,24 @@
+name: deploy-expiration
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'expiration/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker login -u kusamadocker -p $DOCKER_PASS
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS  }}
+      - run: cd expiration && docker build -t kusamadocker/micro-expiration
+      - run: docker push kusamadocker/micro-expiration
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save k8s-micro-ticket
+      - run: kubectl rollout restart deployment expiration-depl

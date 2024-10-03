@@ -1,0 +1,24 @@
+name: deploy-orders
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'orders/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker login -u kusamadocker -p $DOCKER_PASS
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS  }}
+      - run: cd orders && docker build -t kusamadocker/micro-orders
+      - run: docker push kusamadocker/micro-orders
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save k8s-micro-ticket
+      - run: kubectl rollout restart deployment orders-depl
