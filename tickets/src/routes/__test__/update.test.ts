@@ -11,7 +11,7 @@ it('returns a 404 if the provided id does not exist', async () => {
     .set('Cookie', global.signin())
     .send({
       title: 'aslkdfj',
-      price: 20,
+      price: 120,
     })
     .expect(404);
 });
@@ -22,7 +22,7 @@ it('returns a 401 if the user is not authenticated', async () => {
     .put(`/api/tickets/${id}`)
     .send({
       title: 'aslkdfj',
-      price: 20,
+      price: 120,
     })
     .expect(401);
 });
@@ -33,7 +33,7 @@ it('returns a 401 if the user does not own the ticket', async () => {
     .set('Cookie', global.signin())
     .send({
       title: 'asldkfj',
-      price: 20,
+      price: 120,
     });
 
   await request(app)
@@ -54,7 +54,7 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
     .set('Cookie', cookie)
     .send({
       title: 'asldkfj',
-      price: 20,
+      price: 120,
     });
 
   await request(app)
@@ -62,9 +62,17 @@ it('returns a 400 if the user provides an invalid title or price', async () => {
     .set('Cookie', cookie)
     .send({
       title: '',
-      price: 20,
+      price: 200,
     })
     .expect(400);
+
+  await request(app)
+    .put(`/api/tickets/${response.body.id}`)
+    .set('Cookie', cookie)
+    .send({
+      title: 'fafdsfdsaf',
+      price: 49,
+    })
 
   await request(app)
     .put(`/api/tickets/${response.body.id}`)
@@ -84,7 +92,7 @@ it('updates the ticket provided valid inputs', async () => {
     .set('Cookie', cookie)
     .send({
       title: 'asldkfj',
-      price: 20,
+      price: 120,
     });
 
   await request(app)
@@ -112,7 +120,7 @@ it('publishes an event', async () => {
     .set('Cookie', cookie)
     .send({
       title: 'asldkfj',
-      price: 20,
+      price: 220,
     });
 
   await request(app)
@@ -135,7 +143,7 @@ it('rejects updates if the ticket is reserved', async () => {
     .set('Cookie', cookie)
     .send({
       title: 'asldkfj',
-      price: 20,
+      price: 200,
     });
 
   const ticket = await Ticket.findById(response.body.id);
