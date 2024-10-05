@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: kusamadocker/ticketing-client
+          image: kusamadocker/micro-client
           env:
             - name: NEXT_PUBLIC_STRIPE_PUB
               valueFrom:
