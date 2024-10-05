@@ -15,7 +15,7 @@ jobs:
       - run: docker login -u kusamadocker -p $DOCKER_PASSWORD
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS  }}
-      - run: cd client && docker build -t kusamadocker/micro-client
+      - run: cd client && docker build -t kusamadocker/micro-client .
       - run: docker push kusamadocker/micro-client
       - uses: digitalocean/action-doctl@v2
         with:

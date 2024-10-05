@@ -15,7 +15,7 @@ jobs:
       - run: docker login -u kusamadocker -p $DOCKER_PASSWORD
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS  }}
-      - run: cd payments && docker build -t kusamadocker/micro-payments
+      - run: cd payments && docker build -t kusamadocker/micro-payments .
       - run: docker push kusamadocker/micro-payments
       - uses: digitalocean/action-doctl@v2
         with:
