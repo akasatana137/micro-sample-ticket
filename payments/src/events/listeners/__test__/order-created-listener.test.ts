@@ -16,7 +16,7 @@ const setup = async () => {
     status: OrderStatus.Created,
     ticket: {
       id: 'alskdfj',
-      price: 10,
+      price: 100,
     },
   };
 
