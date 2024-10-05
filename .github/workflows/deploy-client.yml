@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: docker login -u kusamadocker -p $DOCKER_PASS
+      - run: docker login -u kusamadocker -p $DOCKER_PASSWORD
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS  }}
       - run: cd client && docker build -t kusamadocker/micro-client
