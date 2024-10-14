@@ -1,5 +1,10 @@
 node_modules
 
+.env
+
 .next
 
 .DS_Store
+
+.terraform
+.terraform.lock.hcl
