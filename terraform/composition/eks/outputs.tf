@@ -132,3 +132,61 @@ output "private_security_group_owner_id" {
 output "private_security_group_name" {
   value = module.vpc.private_security_group_name
 }
+
+#############
+# EKS
+#############
+output "eks_cluster_name" {
+  description = "The name of the EKS cluster."
+  value       = module.eks.cluster_name
+}
+
+output "eks_cluster_id" {
+  description = "The id of the EKS cluster."
+  value       = module.eks.cluster_id
+}
+
+output "eks_cluster_arn" {
+  description = "The Amazon Resource Name (ARN) of the cluster."
+  value       = module.eks.cluster_arn
+}
+
+output "eks_cluster_certificate_authority_data" {
+  description = "Nested attribute containing certificate-authority-data for your cluster. This is the base64 encoded certificate data required to communicate with your cluster."
+  value       = module.eks.cluster_certificate_authority_data
+}
+
+output "eks_cluster_endpoint" {
+  description = "The endpoint for your EKS Kubernetes API."
+  value       = module.eks.cluster_endpoint
+}
+
+output "eks_cluster_version" {
+  description = "The Kubernetes server version for the EKS cluster."
+  value       = module.eks.cluster_version
+}
+
+output "eks_cluster_security_group_id" {
+  description = "Security group ID attached to the EKS cluster."
+  value       = module.eks.cluster_security_group_id
+}
+
+output "eks_cluster_iam_role_name" {
+  description = "IAM role name of the EKS cluster."
+  value       = module.eks.cluster_iam_role_name
+}
+
+output "eks_cluster_iam_role_arn" {
+  description = "IAM role ARN of the EKS cluster."
+  value       = module.eks.cluster_iam_role_arn
+}
+
+output "eks_cluster_oidc_issuer_url" {
+  description = "The URL on the EKS cluster OIDC Issuer"
+  value       = module.eks.cluster_oidc_issuer_url
+}
+
+output "eks_cloudwatch_log_group_name" {
+  description = "Name of cloudwatch log group created"
+  value       = module.eks.cloudwatch_log_group_name
+}

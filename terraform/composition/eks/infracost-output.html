@@ -147,7 +147,7 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
         </li>
         <li>
           <span class="label">Time generated:</span>
-          <span class="value">2024-10-19 17:55:48 JST</span>
+          <span class="value">2024-10-19 23:50:32 JST</span>
         </li>
       </ul>
     </div>
@@ -158,7 +158,7 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
       
       
   
-  <p class="project-name">Project: akasatana137/micro-sample-ticket/terraform/2-create-vpc/composition/eks</p>
+  <p class="project-name">Project: akasatana137/micro-sample-ticket/terraform/3-create-eks/composition/eks</p>
   <table class="breakdown">
     <thead>
       
@@ -177,6 +177,428 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
 
     </thead>
     <tbody>
+      
+        
+  
+  <tr class="resource top-level">
+    <td class="name">
+      
+      
+      module.eks.module.eks_cluster.aws_cloudwatch_log_group.this[0]
+    </td>
+    
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+  </tr>
+  
+    <tr class="tags">
+      <td class="name">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        <span class="label">Tags:</span>
+        <span>Application=micro-ticket, Environment=prod, Name=/aws/eks/eks-apne1-micro-ticket/cluster</span>
+      </td>
+      
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+    </tr>
+  
+  
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Data ingested
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.76 per GB</td>
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Archival Storage
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.033 per GB</td>
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Insights queries data scanned
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.0076 per GB</td>
+    
+  </tr>
+
+  
+  
+
+      
+        
+  
+  <tr class="resource top-level">
+    <td class="name">
+      
+      
+      module.eks.module.eks_cluster.aws_eks_cluster.this[0]
+    </td>
+    
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+  </tr>
+  
+    <tr class="tags">
+      <td class="name">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        <span class="label">Tags:</span>
+        <span>Application=micro-ticket, Environment=prod, terraform-aws-modules=eks</span>
+      </td>
+      
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+    </tr>
+  
+  
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      EKS cluster
+    </td>
+    
+      
+        <td class="monthly-quantity">730</td>
+      
+      
+        <td class="unit">hours</td>
+      
+      
+      
+      
+        <td class="monthly-cost">$73.00</td>
+      
+    
+  </tr>
+
+  
+  
+
+      
+        
+  
+  <tr class="resource top-level">
+    <td class="name">
+      
+      
+      module.eks.module.eks_cluster.module.kms.aws_kms_key.this[0]
+    </td>
+    
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+  </tr>
+  
+    <tr class="tags">
+      <td class="name">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        <span class="label">Tags:</span>
+        <span>Application=micro-ticket, Environment=prod, terraform-aws-modules=eks</span>
+      </td>
+      
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+    </tr>
+  
+  
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Customer master key
+    </td>
+    
+      
+        <td class="monthly-quantity">1</td>
+      
+      
+        <td class="unit">months</td>
+      
+      
+      
+      
+        <td class="monthly-cost">$1.00</td>
+      
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Requests
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.03 per 10k requests</td>
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      ECC GenerateDataKeyPair requests
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.10 per 10k requests</td>
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      RSA GenerateDataKeyPair requests
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.10 per 10k requests</td>
+    
+  </tr>
+
+  
+  
+
+      
+        
+  
+  <tr class="resource top-level">
+    <td class="name">
+      
+      
+      module.eks.module.k8s_secret_kms_key.aws_kms_key.this[0]
+    </td>
+    
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+  </tr>
+  
+    <tr class="tags">
+      <td class="name">
+        
+        
+          
+          
+        
+          
+          
+        
+          
+          
+        
+        <span class="label">Tags:</span>
+        <span>Application=micro-ticket, Environment=prod, Name=cmk-apne1-prod-k8s-secret-dek</span>
+      </td>
+      
+  
+    <td class="monthly-quantity"></td>
+  
+  
+    <td class="unit"></td>
+  
+  
+  
+  
+    <td class="monthly-cost"></td>
+  
+
+    </tr>
+  
+  
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Customer master key
+    </td>
+    
+      
+        <td class="monthly-quantity">1</td>
+      
+      
+        <td class="unit">months</td>
+      
+      
+      
+      
+        <td class="monthly-cost">$1.00</td>
+      
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      Requests
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.03 per 10k requests</td>
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      ECC GenerateDataKeyPair requests
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.10 per 10k requests</td>
+    
+  </tr>
+
+  
+    
+  <tr class="cost-component">
+    <td class="name">
+      
+      <span class="arrow">&#8627;</span>
+      RSA GenerateDataKeyPair requests
+    </td>
+    
+      <td colspan="3" class="usage-cost">Cost depends on usage: $0.10 per 10k requests</td>
+    
+  </tr>
+
+  
+  
+
       
         
   
@@ -218,7 +640,7 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
           
         
         <span class="label">Tags:</span>
-        <span>Application=terraform-eks-micro-ticket-service, Environment=prod, Terraform=true, VPC-Name=vpc-apne1-prod-terraform-eks-micro-ticket-service</span>
+        <span>Application=micro-ticket, Environment=prod, Terraform=true, VPC-Name=vpc-apne1-prod-micro-ticket</span>
       </td>
       
   
@@ -322,7 +744,7 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
           
         
         <span class="label">Tags:</span>
-        <span>Application=terraform-eks-micro-ticket-service, Environment=prod, Name=vpc-apne1-prod-terraform-eks-micro-ticket-service-ap-northeast-1a, Terraform=true, VPC-Name=vpc-apne1-prod-terraform-eks-micro-ticket-service</span>
+        <span>Application=micro-ticket, Environment=prod, Name=vpc-apne1-prod-micro-ticket-ap-northeast-1a, Terraform=true, VPC-Name=vpc-apne1-prod-micro-ticket</span>
       </td>
       
   
@@ -382,7 +804,7 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
       
       <tr class="total">
         <td class="name" colspan="3">Project total</td>
-        <td class="monthly-cost">$45.26</td>
+        <td class="monthly-cost">$120.26</td>
       </tr>
     </tbody>
   </table>
@@ -393,13 +815,13 @@ iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAMAAABlApw1AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7O
       <tbody>
         <tr class="total">
           <td class="name" colspan="3">Overall total</td>
-          <td class="monthly-cost">$45.26</td>
+          <td class="monthly-cost">$120.26</td>
         </tr>
       </tbody>
     </table>
 
     <div class="warnings">
-      <p>37 cloud resources were detected:<br />∙ 2 were estimated, all of which include usage-based costs, see https://infracost.io/usage-file<br />∙ 35 were free, rerun with --show-skipped to see details</p>
+      <p>65 cloud resources were detected:<br />∙ 6 were estimated, 3 of which include usage-based costs, see https://infracost.io/usage-file<br />∙ 59 were free, rerun with --show-skipped to see details</p>
     </div>
   </body>
 </html>

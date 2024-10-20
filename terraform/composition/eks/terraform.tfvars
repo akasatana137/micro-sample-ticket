@@ -2,10 +2,9 @@
 # Environment setting
 #######################
 region       = "ap-northeast-1"
-role_name    = "Admin"
 profile_name = "k8s"
 env          = "prod"
-app_name     = "terraform-eks-micro-ticket-service"
+app_name     = "micro-ticket"
 
 #######################
 # VPC
@@ -22,3 +21,32 @@ single_nat_gateway   = "true"
 
 ## Public Security Group ##
 public_ingress_with_cidr_blocks = []
+
+#######################
+# EKS
+#######################
+create_eks      = true
+cluster_version = "1.31"
+
+self_managed_node_groups = {
+  worker-group-1 = {
+    ami_type = "AL2_x86_64"
+    # instance_type = "m3.medium" not compatiable at az(1d)
+    instance_type = "m5.large"
+
+    min_size     = 1
+    max_size     = 2
+    desired_size = 2
+
+    tags = {
+      "key"                 = "self-managed-node"
+      "propagate_at_launch" = "true"
+      "value"               = "true"
+    }
+  }
+}
+
+cluster_endpoint_public_access  = true
+cluster_endpoint_private_access = false
+
+create_aws_auth_configmap = true

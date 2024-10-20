@@ -1,54 +1,3 @@
-#################
-# VPC
-#################
-variable "cidr" {
-  description = "The CIDR block for the VPC. Default value is a valid CIDR, but not acceptable by AWS and should be overridden"
-  default     = "0.0.0.0/0"
-}
-
-variable "azs" {
-  description = "Number of availability zones to use in the region"
-  type        = list(string)
-}
-
-variable "public_subnets" {
-  description = "A list of public subnets inside the VPC"
-  default     = []
-}
-
-variable "private_subnets" {
-  description = "A list of private subnets inside the VPC"
-  default     = []
-}
-
-variable "enable_dns_hostnames" {
-  description = "Should be true to enable DNS hostnames in the VPC"
-  default     = true
-}
-
-variable "enable_dns_support" {
-  description = "Should be true to enable DNS support in the VPC"
-  default     = true
-}
-
-variable "enable_nat_gateway" {
-  description = "Should be true if you want to provision NAT Gateways for each of your private networks"
-  default     = true
-}
-
-variable "single_nat_gateway" {
-  description = "Should be true if you want to provision a single shared NAT Gateway across all of your private networks"
-  default     = true
-}
-
-#################
-# SG
-#################
-## Public Security Group ##
-variable "public_ingress_with_cidr_blocks" {
-  type = list(any)
-}
-
 ###############
 ## EKS
 ###############
@@ -111,11 +60,19 @@ variable "cluster_endpoint_public_access" {
   default     = false
 }
 
-## RBAC
+###############
+## RBAC for EKS
+###############
 variable "create_aws_auth_configmap" {
   description = "Determines whether to create the aws-auth configmap. NOTE - this is only intended for scenarios where the configmap does not exist (i.e. - when using only self-managed node groups). Most users should use `manage_aws_auth_configmap`"
   type        = bool
   default     = false
+}
+
+variable "aws_auth_roles" {
+  description = "List of role maps to add to the aws-auth configmap"
+  type        = list(any)
+  default     = []
 }
 
 ###############
@@ -124,13 +81,14 @@ variable "create_aws_auth_configmap" {
 variable "region" {
 }
 
-variable "profile_name" {
-}
-
 variable "env" {
 }
 
 variable "app_name" {
+}
+
+variable "tags" {
+  type = map(string)
 }
 
 variable "region_tag" {
