@@ -36,23 +36,44 @@ module "eks_cluster" {
   cluster_endpoint_private_access = var.cluster_endpoint_private_access
 
   ### note
-  # enable access to api endpoint from this account user
+  # enable access to api endpoint from this account user(これがあれば現在作成したユーザーからアクセス可能)
   enable_cluster_creator_admin_permissions = true
 
+  # https://aws.amazon.com/jp/builders-flash/202407/eks-terraform/
+  access_entries = {
+    default = {
+      principal_arn = "arn:aws:iam::${data.aws_caller_identity.this.account_id}:user/admin"
+
+      policy_associations = [
+        {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        },
+        {
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = {
+            type = "cluster"
+          }
+        }
+      ]
+    }
+  }
   tags = var.tags
 }
 
 # todo: moduleから作成できないか確認
 # 自作のresource modulesを作成した方が良いかも
-resource "aws_eks_access_policy_association" "example" {
-  cluster_name  = module.eks_cluster.cluster_name
-  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
-  principal_arn = "arn:aws:iam::${data.aws_caller_identity.this.account_id}:user/k8s"
+# resource "aws_eks_access_policy_association" "example" {
+#   cluster_name  = module.eks_cluster.cluster_name
+#   policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSAdminPolicy"
+#   principal_arn = "arn:aws:iam::${data.aws_caller_identity.this.account_id}:user/k8s"
 
-  access_scope {
-    type = "cluster"
-  }
-}
+#   access_scope {
+#     type = "cluster"
+#   }
+# }
 
 ###############
 ## EKS for RBAC
