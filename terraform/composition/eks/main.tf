@@ -34,7 +34,7 @@ module "eks" {
   vpc_id          = module.vpc.vpc_id
   subnet_ids      = module.vpc.private_subnets
 
-  self_managed_node_groups = var.self_managed_node_groups
+  self_managed_node_groups = local.self_managed_node_groups
   eks_managed_node_groups  = var.eks_managed_node_groups
   node_security_group_id   = var.node_security_group_id
 
@@ -51,6 +51,21 @@ module "eks" {
   app_name = var.app_name
   tags     = local.eks_tags
   region   = var.region
+}
+
+########################################
+## KMS for EKS node's EBS volume
+########################################
+module "eks_node_ebs_kms_key" {
+  source = "terraform-aws-modules/kms/aws"
+
+  aliases                 = local.eks_node_ebs_kms_key_aliases
+  description             = local.eks_node_ebs_kms_key_description
+  deletion_window_in_days = local.eks_node_ebs_kms_key_deletion_window_in_days
+  policy                  = data.aws_iam_policy_document.ebs_decryption.json
+  enable_key_rotation     = true
+
+  tags = local.eks_node_ebs_kms_key_tags
 }
 
 # Create kubeconfig file

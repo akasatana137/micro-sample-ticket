@@ -28,24 +28,6 @@ public_ingress_with_cidr_blocks = []
 create_eks      = true
 cluster_version = "1.31"
 
-self_managed_node_groups = {
-  worker-group-1 = {
-    ami_type = "AL2_x86_64"
-    # instance_type = "m3.medium" not compatiable at az(1d)
-    instance_type = "m5.large"
-
-    min_size     = 1
-    max_size     = 2
-    desired_size = 2
-
-    tags = {
-      "key"                 = "self-managed-node"
-      "propagate_at_launch" = "true"
-      "value"               = "true"
-    }
-  }
-}
-
 cluster_endpoint_public_access  = true
 cluster_endpoint_private_access = false
 
