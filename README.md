@@ -218,6 +218,8 @@ kubectl apply -f infra/digital-ocean
 
 準備中
 
+![ticket eks overview](./imgs/ticket-eks-overview.png)
+
 ## 今後の改善点
 
 - デプロイ先を AWS EKS に変更
